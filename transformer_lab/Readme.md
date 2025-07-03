@@ -1,6 +1,6 @@
 # Transformer Lab
 
-Exercise 1 & 2 can be found into the "transformer_1-2.ipynb" notebook
+* Exercise 1 & 2 can be found into the "transformer_1-2.ipynb" notebook
 
 * Last picked exercise 3.2 is implemented into the two python file "transformer_3_2_Lora_fine_tuned.py" & "transformer_3_2_metrics.py" (both use function from utility.py)
 * Dataset: https://huggingface.co/datasets/AI-Lab-Makerere/beans (I know is small but is useful to train all the part of CLIP separately)
