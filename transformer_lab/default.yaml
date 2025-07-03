@@ -1,0 +1,38 @@
+# fine-tune text, vision or both
+# "text"
+# "vision"
+# "hybrid"
+# also used for fine tuned metric
+mode: "vision"
+
+#Select model to use for zero-shot-image-classification
+# "not_fine_tuned"
+# "fine_tuned_text"
+# "fine_tuned_vision
+# "fine_tuned_hybrid
+zero_shot: "not_fine_tuned"
+
+save_folders:
+  text_folder: "./Output/beans_text"
+  vision_folder: "./Output/beans_vision"
+  text_vision_folder: "./Output/beans_text_vision"
+
+training_args:
+  eval_strategy: "epoch"
+  per_device_train_batch_size: 64
+  per_device_eval_batch_size: 64
+  optim: "adamw_torch"
+  lr: 0.001
+  epochs: 50
+  save_strategy: "best"
+  seed: 104
+  metric_for_best_model: "eval_loss"
+  label_names: ["labels"]
+  dataloader_pin_memory: true
+  tf32: true #remove for older than Ampere NVIDIA Architecture GPU 
+
+lora_args:
+  r: 16
+  alpha: 32
+  dropout: 0.1
+  task_type: "FEATURE_EXTRACTION"
