@@ -1,3 +1,1 @@
-Still uploading...
-
-The disc has decided to break i'm trying to recover a backup hoping tomorrow is not too late.
+Notebook for Out Of Distribution Laboratory
