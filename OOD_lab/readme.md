@@ -1,1 +1,1 @@
-Notebook for Out Of Distribution Laboratory
+Notebook for Adversarial Learning and OOD Detection
