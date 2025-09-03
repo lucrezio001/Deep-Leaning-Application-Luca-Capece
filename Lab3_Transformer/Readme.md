@@ -1,6 +1,6 @@
 # Transformer Lab
 
-This repository contains deep learning experiments focused on transformer-based models, including fine-tuning and evaluation with classification tasks.
+This repository contains deep learning experiments focused on transformer-based models, including CLIP fine-tuning and evaluation on classification tasks.
 
 ## Exercises Overview
 
