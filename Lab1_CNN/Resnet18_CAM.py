@@ -14,7 +14,7 @@ import cv2
 import os
 
 # output directory
-os.makedirs("CAM_output", exist_ok=True)
+os.makedirs("CAM_Output", exist_ok=True)
 
 # Imagenette dataset
 data = datasets.Imagenette(root="data", split="val", download=True) #full resolution
@@ -110,5 +110,5 @@ for i in range(len(predicted_class)):
     height, width, _ = img_cv.shape
     heatmap = cv2.applyColorMap(cv2.resize(CAMs[0], (width, height)), cv2.COLORMAP_JET)
     result = heatmap * 0.3 + img_cv * 0.5
-    cv2.imwrite(('CAM_output/CAM_Imagenette_' + str(i) + '.jpg'), result)
+    cv2.imwrite(('CAM_Output/CAM_Imagenette_' + str(i) + '.jpg'), result)
     print("output CAM.jpg for the top1 prediction: %s" % class_idx[predicted_class[i]])
