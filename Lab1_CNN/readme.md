@@ -35,8 +35,8 @@ ResMLP solves this problem via residual connections, leading to better gradient 
 [![W&B Project](https://img.shields.io/badge/W%26B-Project-lightgrey?logo=wandb)](https://wandb.ai/lucacapece007-universit-di-firenze/Lab1_experiments_MNIST?nw=nwuserlucacapece007)
 
 **Gradient Norm Comparisons (Depth 15):**  
-![MLP Gradient Norms](grad_normsMLP_baseline_depth_15.png)  
-![ResMLP Gradient Norms](grad_normsResMLP_baseline_depth_15.png)
+![](Lab1_CNN/Output/grad_normsMLP_baseline_depth_15.png)  
+![](Lab1_CNN/Output/grad_normsResMLP_baseline_depth_15.png)
 
 Second Part compare *CNN* and *ResCNN* trained on MNIST at different net depths, in this case we can see how in mean ResCNN outperform the classical CNN
 [![W&B Project](https://img.shields.io/badge/W%26B-Project-lightgrey?logo=wandb)](https://wandb.ai/lucacapece007-universit-di-firenze/Lab1_experiments_CIFAR10?nw=nwuserlucacapece007)
