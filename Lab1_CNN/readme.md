@@ -61,16 +61,17 @@ The CNN used for CIFAR10 is the following one (ResCNN depth 5)
 CAM is evaluated for both CIFAR10 and Imagenette datasets:
 
 - **CIFAR10 CAM examples:**
-  ![](CAM_output/CAM_CIFAR10_0.jpg) 
-  ![](CAM_output/CAM_CIFAR10_1.jpg)  
-  ![](CAM_output/CAM_CIFAR10_2.jpg)  
-  ![](CAM_output/CAM_CIFAR10_3.jpg)  
-  ![](CAM_output/CAM_CIFAR10_4.jpg)  
- 
+
+  ![](CAM_output/CAM_CIFAR10_0.jpg)
+  ![](CAM_output/CAM_CIFAR10_1.jpg)
+  ![](CAM_output/CAM_CIFAR10_2.jpg)
+  ![](CAM_output/CAM_CIFAR10_3.jpg)
+  ![](CAM_output/CAM_CIFAR10_4.jpg)
 
 however CIFAR10 images have terrible resolution, for this reason same tecnique get used on the imaginette dataset
 
 - **Imagenette CAM examples (using pretrained ResNet18):**
+
   ![](CAM_output/CAM_Imagenette_0.jpg)
   ![](CAM_output/CAM_Imagenette_1.jpg)  
   ![](CAM_output/CAM_Imagenette_2.jpg)  
