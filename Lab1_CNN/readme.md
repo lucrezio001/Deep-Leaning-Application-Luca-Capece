@@ -1,46 +1,98 @@
-# Lab1_CNN
+# Laboratory 1 CNNs
 
-Questo progetto implementa una rete convoluzionale profonda (CNN) per compiti di classificazione di immagini, basata sull'architettura ResNet-18 e sulla tecnica di Class Activation Maps (CAM) per l'interpretabilità del modello. L'obiettivo è sfruttare un modello pre-addestrato ResNet-18 per estrarre caratteristiche efficaci e utilizzare CAM per visualizzare le aree di interesse del modello durante le predizioni.
+This repository contains deep learning experiments for fist CNN Laboratory
 
-## Architettura
+## Models
 
-- **ResNet-18**: Il modello utilizza l'architettura ResNet-18, introdotta da He et al. (2016), che ha rivoluzionato il training di reti molto profonde tramite blocchi residuali. ResNet-18 è composta da 17 layer convoluzionali, un max pooling layer e uno strato fully connected. La caratteristica chiave è l'uso di connessioni skip (residual connections) che mitigano il problema del gradiente che svanisce, consentendo un training più stabile e profondo [He et al., 2016].[^1]
-- **Class Activation Maps (CAM)**: La tecnica CAM consente di localizzare le regioni dell'immagine che contribuiscono maggiormente alla decisione del modello, migliorando l'interpretabilità. CAM calcola una mappa di attivazione pesata delle feature maps estratte dall'ultimo layer convoluzionale tramite i pesi del layer fully connected. Introdotto da Zhou et al. (2015), CAM è fondamentale per la visualizzazione delle regioni discriminanti del modello [Zhou et al., 2015; Lee et al., 2021].[^2][^3]
+- **MLP:** Classic Multilayer Perceptron  
+- **ResMLP:** Multilayer Perceptron with residual connections  
+- **CNN:** Basic Convolutional Neural Network; internal blocks are similar to ResNet18 but without residuals  
+- **ResCNN:** Convolutional Neural Network using ResNet18 core blocks with residual connections
+
+## Datasets
+
+Models are trained on two datasets:
+
+- **MNIST:**  
+  - Used for MLP and ResMLP  
+  - [MNIST Dataset Documentation](https://docs.pytorch.org/vision/main/generated/torchvision.datasets.MNIST.html)
+- **CIFAR10:**  
+  - Used for CNN and ResCNN  
+  - [CIFAR10 Dataset Documentation](https://docs.pytorch.org/vision/main/generated/torchvision.datasets.CIFAR10.html)
+
+## Experiment Tracking with Weights & Biases
+
+This project uses [Weights & Biases (W&B)](https://wandb.ai/) for tracking experiments and visualizing training metrics.
+- [Lab1_experiments_MNIST Project](https://wandb.ai/lucacapece007-universit-di-firenze/Lab1_experiments_MNIST?nw=nwuserlucacapece007)  
+- [Lab1_experiments_CIFAR10 Project](https://wandb.ai/lucacapece007-universit-di-firenze/Lab1_experiments_CIFAR10?nw=nwuserlucacapece007)  
+- [Lab1_ResCNN_CAM Project](https://wandb.ai/lucacapece007-universit-di-firenze/Lab1_ResCNN_CAM?nw=nwuserlucacapece007)
+
+### MLP vs ResMLP on MNIST
+
+MLP and ResMLP are trained on MNIST at varying depths.  
+Classic MLPs with increased depth suffer from **vanishing gradients**, resulting in poor accuracy.  
+ResMLP solves this problem via residual connections, leading to better gradient flow and higher accuracy.
+[![W&B Project](https://img.shields.io/badge/W%26B-Project-lightgrey?logo=wandb)](https://wandb.ai/lucacapece007-universit-di-firenze/Lab1_experiments_MNIST?nw=nwuserlucacapece007)
+
+**Gradient Norm Comparisons (Depth 15):**  
+![MLP Gradient Norms](grad_normsMLP_baseline_depth_15.png)  
+![ResMLP Gradient Norms](grad_normsResMLP_baseline_depth_15.png)
+
+Second Part compare *CNN* and *ResCNN* trained on MNIST at different net depths, in this case we can see how in mean ResCNN outperform the classical CNN
+[![W&B Project](https://img.shields.io/badge/W%26B-Project-lightgrey?logo=wandb)](https://wandb.ai/lucacapece007-universit-di-firenze/Lab1_experiments_CIFAR10?nw=nwuserlucacapece007)
+
+**CNN ResCNN boxplot comparison:** 
 
 
-## Dataset
+### Class Activation Maps (CAM)
 
-Il modello può essere addestrato e testato su dataset di immagini comunemente usati per classificazione, come:
+Second part of the laboratory implement Class Activation map for both:
+- [CIFAR10](https://docs.pytorch.org/vision/main/generated/torchvision.datasets.CIFAR10.html)
+- [imaginette](https://docs.pytorch.org/vision/main/generated/torchvision.datasets.Imagenette.html)
 
-- **ImageNet**: Ampio dataset di immagini con 1000 classi, tipicamente usato per il pretraining dei modelli ResNet.
-- Altri dataset di dominio specifico (medicale, industriale, etc.) possono essere adottati a seconda dell'applicazione.
+CAM is implemented for interpretability — it highlights image regions that contribute most to model decisions.  
+CAM calculates a weighted activation map from the final convolutional layer's feature maps using the fully connected layer weights.
 
+
+
+The CNN used for CIFAR10 is the following one (ResCNN depth 5) 
+[![W&B Project](https://img.shields.io/badge/W%26B-Project-lightgrey?logo=wandb)](https://wandb.ai/lucacapece007-universit-di-firenze/Lab1_ResCNN_CAM?nw=nwuserlucacapece007)
+
+CAM is evaluated for both CIFAR10 and Imagenette datasets:
+
+- **CIFAR10 CAM examples:**  
+  ![](CAM_output/CAM_CIFAR10_1.jpg)  
+  ![](CAM_output/CAM_CIFAR10_2.jpg)  
+  ![](CAM_output/CAM_CIFAR10_3.jpg)  
+  ![](CAM_output/CAM_CIFAR10_4.jpg)  
+  ![](CAM_output/CAM_CIFAR10_5.jpg) 
+
+however CIFAR10 images have terrible resolution, for this reason same tecnique get used on the imaginette dataset
+
+- **Imagenette CAM examples (using pretrained ResNet18):**  
+  ![](CAM_output/CAM_Imagenette_1.jpg)  
+  ![](CAM_output/CAM_Imagenette_2.jpg)  
+  ![](CAM_output/CAM_Imagenette_3.jpg)  
+  ![](CAM_output/CAM_Imagenette_4.jpg)  
+  ![](CAM_output/CAM_Imagenette_5.jpg)
 
 ## Installazione
 
-1. Clonare il repository:
+1. Clone repository:
 
 ```
 git clone https://github.com/lucrezio001/Deep-Leaning-Application-Luca-Capece.git
 cd Deep-Leaning-Application-Luca-Capece/Lab1_CNN
 ```
 
-2. Installare le dipendenze Python:
+2. Install dipendency:
 
 ```
 pip install -r requirements.txt
 ```
 
+## Bibliography
 
-## Uso
+- He, K., Zhang, X., Ren, S., & Sun, J. (2015). Deep Residual Learning for Image Recognition. [arXiv:1512.03385](https://doi.org/10.48550/arXiv.1512.03385)  
+- Zhou, B., Khosla, A., Lapedriza, A., Oliva, A., & Torralba, A. (2015). Learning Deep Features for Discriminative Localization. [arXiv:1512.04150](https://doi.org/10.48550/arXiv.1512.04150)
 
-- Il training si basa su ResNet-18 pre-addestrato su ImageNet, con possibilità di fine-tuning sul dataset specifico.
-- Per eseguire il training o la valutazione, utilizzare gli script Python presenti nella cartella.
-- CAM è integrato per generare mappe di attivazione visualizzabili per ogni immagine classificata.
-
-
-## Riferimenti
-
-- K. He, X. Zhang, S. Ren, and J. Sun, "Deep Residual Learning for Image Recognition," in *Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)*, 2016. [DOI PDF](https://arxiv.org/abs/1512.03385)[^1]
-- B. Zhou, A. Khosla, A. Lapedriza, A. Oliva, and A. Torralba, "Learning Deep Features for Discriminative Localization," arXiv preprint arXiv:1512.04150, 2015. [arXiv PDF](https://arxiv.org/abs/1512.04150)[^3]
-- H. Lee et al., "Relevance-CAM: Your Model Already Knows Where To Look," in *CVPR 2021*, 2021. [PDF](https://openaccess.thecvf.com/content/CVPR2021/papers/Lee_Relevance-CAM_Your_Model_Already_Knows_Where_To_Look_CVPR_2021_paper.pdf)[^2]
