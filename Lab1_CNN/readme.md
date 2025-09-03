@@ -35,14 +35,14 @@ ResMLP solves this problem via residual connections, leading to better gradient 
 [![W&B Project](https://img.shields.io/badge/W%26B-Project-lightgrey?logo=wandb)](https://wandb.ai/lucacapece007-universit-di-firenze/Lab1_experiments_MNIST?nw=nwuserlucacapece007)
 
 **Gradient Norm Comparisons (Depth 15):**  
-![](Lab1_CNN/Output/grad_normsMLP_baseline_depth_15.png)  
-![](Lab1_CNN/Output/grad_normsResMLP_baseline_depth_15.png)
+![MLP Gradient Norms](Output/grad_normsMLP_baseline_depth_15.png)  
+![ResMLP Gradient Norms](Output/grad_normsResMLP_baseline_depth_15.png) 
 
 Second Part compare *CNN* and *ResCNN* trained on MNIST at different net depths, in this case we can see how in mean ResCNN outperform the classical CNN
 [![W&B Project](https://img.shields.io/badge/W%26B-Project-lightgrey?logo=wandb)](https://wandb.ai/lucacapece007-universit-di-firenze/Lab1_experiments_CIFAR10?nw=nwuserlucacapece007)
 
 **CNN ResCNN boxplot comparison:** 
-
+![Boxplot CNN Results](Output/boxplot_CNN.png)
 
 ### Class Activation Maps (CAM)
 
@@ -60,21 +60,23 @@ The CNN used for CIFAR10 is the following one (ResCNN depth 5)
 
 CAM is evaluated for both CIFAR10 and Imagenette datasets:
 
-- **CIFAR10 CAM examples:**  
+- **CIFAR10 CAM examples:**
+  ![](CAM_output/CAM_CIFAR10_0.jpg) 
   ![](CAM_output/CAM_CIFAR10_1.jpg)  
   ![](CAM_output/CAM_CIFAR10_2.jpg)  
   ![](CAM_output/CAM_CIFAR10_3.jpg)  
   ![](CAM_output/CAM_CIFAR10_4.jpg)  
-  ![](CAM_output/CAM_CIFAR10_5.jpg) 
+ 
 
 however CIFAR10 images have terrible resolution, for this reason same tecnique get used on the imaginette dataset
 
-- **Imagenette CAM examples (using pretrained ResNet18):**  
+- **Imagenette CAM examples (using pretrained ResNet18):**
+  ![](CAM_output/CAM_Imagenette_0.jpg)
   ![](CAM_output/CAM_Imagenette_1.jpg)  
   ![](CAM_output/CAM_Imagenette_2.jpg)  
   ![](CAM_output/CAM_Imagenette_3.jpg)  
   ![](CAM_output/CAM_Imagenette_4.jpg)  
-  ![](CAM_output/CAM_Imagenette_5.jpg)
+  
 
 ## Installazione
 
