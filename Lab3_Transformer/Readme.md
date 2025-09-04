@@ -5,7 +5,7 @@ This repository contains deep learning experiments focused on transformer-based 
 ## Exercises Overview
 
 - **Exercise 1 \& 2:** Implemented in `transformer_1-2.ipynb`.
-- **Exercise 3.2:** Scripts in `transformer_3_2_Lora_fine_tuned.py` and `transformer_3_2_metrics.py`—both utilize `utility.py` functions.
+- **Exercise 3.2:** Scripts in `transformer_3_2_Lora_fine_tuned.py` and `transformer_3_2_metrics.py` both utilize `utility.py` functions.
 
 
 ## Models
@@ -70,6 +70,16 @@ cd Deep-Leaning-Application-Luca-Capece/Lab3_Transformer
 pip install -r requirements.txt
 ```
 
+3. Train Clip using Lora:
+    - Select desired Mode and hyperparameter using "default.yaml" file 
+```
+python transformer_3_2_Lora_fine_tuned.py
+```
+4. Evaluate Clip model:
+    - Rename the desired checkpoint folder as best_(mode)
+```
+python transformer_3_2_metrics.py
+```
 
 ## Results Table
 
