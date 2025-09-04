@@ -110,7 +110,7 @@ def plot_logit_and_softmax_fake(model, fakeloader, classes, temperature=1.0, out
     s = F.softmax(output / temperature, dim=1)
     plt.bar(np.arange(output.shape[1]), s[k].detach().cpu().numpy())
     plt.title(f'Fake_Softmax T={temperature}')
-    softmax_path = f'{output_folder}/softmax_Pred_{pred_label}.png'
+    softmax_path = f'{output_folder}/Fake_softmax_Pred_{pred_label}.png'
     plt.savefig(softmax_path)
     plt.close()
 
