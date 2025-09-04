@@ -14,10 +14,16 @@
 ## Pipeline Overview
 
 1. **OOD Detection and Performance Evaluation**
-    - Compute confusion matrix (`confusion_matrix.png`)
-    - Visualize model predictions through logit and softmax outputs:
-        - Predicted class image (`softmax_Pred_*.png`)
-        - True class image (`True_image_GT_*.png`)
+    - Confusion matrix to check CNN performance on CIFAR10
+      ![confusion_matrix](output/confusion_matrix.png)
+    - Visualize model predictions for a sample through logit and softmax outputs on CIFAR10:
+      ![sample]()
+      ![Predicted class image] (`softmax_Pred_*.png`)
+      ![True class image] (`True_image_GT_*.png`)
+    - Visualize model predictions for a sample through logit and softmax outputs on FakeData:
+      ![sample]()
+      ![Predicted class image] (`softmax_Pred_*.png`)
+      ![True class image] (`True_image_GT_*.png`)
     - OOD detection via MaxLogit scores and Autoencoder reconstruction error:
         - `line_plot_scores_CNN.png`, `histogram_scores_CNN.png`, `roc_curve_CNN.png`
         - `line_plot_scores_Autoencoder.png`, `precision_recall_curve_Autoencoder.png`
