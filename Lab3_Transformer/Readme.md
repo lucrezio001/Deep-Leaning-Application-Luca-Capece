@@ -75,6 +75,7 @@ pip install -r requirements.txt
 
 Below is a template for reporting test metrics across evaluated modes:
 
+[![W&B Project](https://img.shields.io/badge/W%26B-Project-lightgrey?logo=wandb)](https://wandb.ai/lucacapece007-universit-di-firenze/Lab3_transformer_3-2_clip_metrics?nw=nwuserlucacapece007)
 
 | Model Mode | F1 | Precision | Recall | Accuracy |
 | :-- | :-- | :-- | :-- | :-- |
