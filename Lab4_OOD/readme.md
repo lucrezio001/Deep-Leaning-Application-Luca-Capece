@@ -1,32 +1,19 @@
-# Laboratory 4: Adversarial Robustness \& OOD Detection
-
-This repository presents deep learning experiments exploring adversarial robustness and out-of-distribution (OOD) detection strategies with CNNs and Autoencoders using the **CIFAR10** dataset.
+# Laboratory 4: Adversarial Learning and OOD Detection
 
 ## Models
 
-- **ResCNN:** Residual Convolutional Neural Network based on ResNet18 blocks for robust image classification.
-- **Autoencoder:** Unsupervised model for image reconstruction and anomaly/OOD detection.
+- **ResCNN:** Residual Convolutional Neural Network based on ResNet18 blocks for robust image classification (Same architecture as Lab1_CNN).
+- **Autoencoder:** Unsupervised model used for OOD detection.
 
 
 ## Datasets
 
-- **CIFAR10:** Main training and evaluation dataset for all supervised and unsupervised experiments.
-- **FakeData:** Synthetic unlabeled data for OOD detection demonstration.
-
-
-## Experiment Tracking
-
-All runs, training, and evaluation metrics are logged and visualized via [Weights \& Biases (W\&B)](https://wandb.ai/):
-
-- Project: `Lab4_OOD_FGSM`
-- Example: [W\&B Dashboard](https://app.wandb.ai/)
-
+- [**CIFAR10:**](https://docs.pytorch.org/vision/main/generated/torchvision.datasets.CIFAR10.html) Main training and evaluation dataset for all supervised and unsupervised experiments.
+- [**FakeData:**](https://docs.pytorch.org/vision/main/generated/torchvision.datasets.FakeData.html) Synthetic unlabeled data for OOD detection demonstration.
 
 ## Pipeline Overview
 
-The experiment pipeline includes:
-
-1. **CNN Evaluation/OOD Detection**
+1. **OOD Detection and Performance Evaluation**
     - Compute confusion matrix (`confusion_matrix.png`)
     - Visualize model predictions through logit and softmax outputs:
         - Predicted class image (`softmax_Pred_*.png`)
@@ -123,8 +110,5 @@ pip install -r requirements.txt
 
 - Goodfellow, I.J., Shlens, J., \& Szegedy, C. (2015). Explaining and harnessing adversarial examples. [arXiv:1412.6572](https://arxiv.org/abs/1412.6572)
 - He, K., Zhang, X., Ren, S., \& Sun, J. (2015). Deep Residual Learning for Image Recognition. [arXiv:1512.03385](https://doi.org/10.48550/arXiv.1512.03385)
-- W\&B Documentation: [https://docs.wandb.ai/](https://docs.wandb.ai/)
-- PyTorch Datasets: [CIFAR10](https://docs.pytorch.org/vision/main/generated/torchvision.datasets.CIFAR10.html)
-- PyTorch Datasets: [FakeData](https://docs.pytorch.org/vision/main/generated/torchvision.datasets.FakeData.html)
 
 ***
