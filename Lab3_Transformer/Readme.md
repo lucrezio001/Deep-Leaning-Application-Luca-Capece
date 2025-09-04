@@ -78,12 +78,12 @@ Below is a template for reporting test metrics across evaluated modes:
 
 | Model Mode | F1 | Precision | Recall | Accuracy |
 | :-- | :-- | :-- | :-- | :-- |
-| Zero-shot |  |  |  |  |
-| Text |  |  |  |  |
-| Vision |  |  |  |  |
-| Hybrid |  |  |  |  |
+| Zero-shot | 16.76% | 11.19% | 33.33% | 33.59% |
+| Text | 100% | 100% | 100% | 100% |
+| Vision | 97.67% | 97.82% | 97.67% | 97.65% |
+| Hybrid | 100% | 100% | 100% | 100% |
 
-_Fill in results after running `transformer_3_2_metrics.py`._
+Note: [Beans](https://huggingface.co/datasets/AI-Lab-Makerere/beans) dataset doesn't have text prompt so to each example get added "A photo of a (label)" so Hybrid and text get the classification extremely easy.
 
 ## Bibliography
 
