@@ -12,7 +12,7 @@ warnings.filterwarnings("ignore")
 
 if __name__ == "__main__":
     
-    os.environ["WANDB_PROJECT"] = "transformer_3.2_clip"
+    os.environ["WANDB_PROJECT"] = "Lab3_transformer_3-2_clip_metrics"
     os.environ["WANDB_LOG_MODEL"]="checkpoint"
     os.environ["WANDB_WATCH"]="false"
     
