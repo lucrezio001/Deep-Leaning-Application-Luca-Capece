@@ -265,6 +265,7 @@ python training_Autoencoder.py
 ```
 4. **Visualize Results**
     - All outputs and visualizations are saved in the `output` folder following the directory structure described above.
+    - FGSM robust training can be found here [![W&B Project](https://img.shields.io/badge/W%26B-Project-lightgrey?logo=wandb)](https://wandb.ai/lucacapece007-universit-di-firenze/Lab4_OOD_FGSM)
     - Run `Lab4_OOD.py` to perform all the content described above.
 ```bash
 python Lab4_OOD.py
