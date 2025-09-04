@@ -2,7 +2,7 @@
 
 ## Models
 
-- **ResCNN:** Residual Convolutional Neural Network based on ResNet18 blocks for robust image classification (Same architecture as Lab1_CNN).
+- **ResCNN:** Residual Convolutional Neural Network based on ResNet18 blocks for image classification (Same architecture as Lab1_CNN).
 - **Autoencoder:** Unsupervised model used for OOD detection.
 
 
@@ -14,63 +14,65 @@
 ## Pipeline Overview
 
 1. **OOD Detection and Performance Evaluation Using CNN**
-    - Confusion matrix to check CNN performance on CIFAR10
-        ![confusion_matrix](output/confusion_matrix.png)
-    - Visualize model predictions for a sample through logit and softmax outputs on CIFAR10:
-        ![image](output/True_image_GT_truck_Pred_truck.png)
-        ![logit](output/True_logit_GT_truck_Pred_truck.png)
-        ![softmax](output/True_softmax_GT_truck_Pred_truck.png)
-    - Visualize model predictions for a sample through logit and softmax outputs on FakeData:
-        ![image](output/Fake_image_Pred_horse.png)
-        ![logit](output/Fake_Pred_horse.png)
-        ![softmax](output/Fake_softmax_Pred_horse.png)
-    - Distribution of dataset for CNN:
-        ![line_distr](output/line_plot_scores_CNN.png)
+    - Confusion matrix to check CNN performance on CIFAR10  
+        ![confusion_matrix](output/confusion_matrix.png)  
+    - Visualize model predictions for a sample through logit and softmax outputs on CIFAR10:  
+        ![image](output/True_image_GT_truck_Pred_truck.png)  
+        ![logit](output/True_logit_GT_truck_Pred_truck.png)  
+        ![softmax](output/True_softmax_GT_truck_Pred_truck.png)  
+    - Visualize model predictions for a sample through logit and softmax outputs on FakeData:  
+        ![](output/Fake_image_Pred_horse.png)  
+        ![logit](output/Fake_Pred_horse.png)  
+        ![softmax](output/Fake_softmax_Pred_horse.png)  
+    - Distribution of dataset for CNN:  
+        ![line_distr](output/line_plot_scores_CNN.png)  
         ![hist_distr](output/histogram_scores_CNN.png)
-
+      
 2. **OOD Detection and Performance Evaluation Using Autoencoder**
-    - Distribution of dataset for CNN:
-        ![line_distr](output/line_plot_scores_Autoencoder.png)
+    - Distribution of dataset for CNN:  
+        ![line_distr](output/line_plot_scores_Autoencoder.png)  
         ![hist_distr](output/histogram_scores_Autoencoder.png)
+      
+3. **OOD Detection Metrics for CNN & Autoencoder**  
+    - Precision Recall and ROC curve for CNN:  
+        ![P_R](output/precision_recall_curve_CNN.png)  
+        ![ROC](output/roc_curve_CNN.png)  
+    - Precision Recall and ROC curve for Autoencoder:  
+        ![P_R](output/precision_recall_curve_CNN.png)  
+        ![ROC](output/roc_curve_CNN.png)  
 
-3. **OOD Detection Metrics for CNN & Autoencoder**
-    - Precision Recall and ROC curve for CNN:
-        ![P_R](output/precision_recall_curve_CNN.png)
-        ![ROC](output/roc_curve_CNN.png)
-    - Precision Recall and ROC curve for Autoencoder:
-        ![P_R](output/precision_recall_curve_CNN.png)
-        ![ROC](output/roc_curve_CNN.png)
+4. **Enhancing Robustness to Adversarial Attack**  
 
-4. **Enhancing Robustness to Adversarial Attack**
+    - Fast Gradient Sign Method (FGSM) perturbs samples in the direction of the gradient with respect to the input x:
+        - η(x) = ε * sign( ∇_x L(θ, x, y) )
+        - where ε is the attack budget controlling perturbation magnitude.
 
-    - Fast Gradient Sign Method (FGSM) perturbs samples in the direction of the gradient with respect to the input $\mathbf{x}$:
-            $$ \boldsymbol{\eta}(\mathbf{x}) = \varepsilon \mathrm{sign}(\nabla_{\mathbf{x}} \mathcal{L}(\boldsymbol{\theta}, \mathbf{x}, y)) ) $$
+    - Baseline Untargeted FGSM Attack  
+        - Original image  
+            ![img](output/untargeted_baseline/original_image.png)  
+        - Perturbation  
+            ![perturbation](output/untargeted_baseline/perturbation_image_3_steps.png)  
+        - Scale of the perturbation  
+            ![hist](output/untargeted_baseline/perturbation_histogram_3_steps.png)  
+        - New adversarial image  
+            ![adv_img](output/untargeted_baseline/adversarial_image_3_steps.png)  
 
-        where $\varepsilon$ is the attack budget controlling perturbation magnitude.
-
-    - Baseline Untargeted FGSM Attack
-        - Original image
-            ![img](output/untargeted_baseline/original_image.png)
-        - Perturbation
-            ![perturbation](output/untargeted_baseline/perturbation_image_3_steps.png)
-        - Scale of the perturbation
-            ![hist](output/untargeted_baseline/perturbation_histogram_3_steps.png)
-        - New adversarial image
-            ![adv_img](output/untargeted_baseline/adversarial_image_3_steps.png)
-
-    > **Note:** Attack budget $\varepsilon = 6/255$
+    > **Note:** Attack budget $\varepsilon = 6/255$  
 - Untargeted FGSM Attack after Untargeted Adversarial training
-    - [img](output/untargeted_trained_on_adv_sample/original_image.png)
-    - [perturbation](output/untargeted_trained_on_adv_sample/perturbation_image_6_steps.png)
-    - [hist](output/untargeted_trained_on_adv_sample/perturbation_histogram_6_steps.png)
-    - [adv_img](output/untargeted_trained_on_adv_sample/adversarial_image_6_steps.png)
+    - Original image  
+        - ![img](output/untargeted_trained_on_adv_sample/original_image.png)  
+    - Perturbation  
+        - ![perturbation](output/untargeted_trained_on_adv_sample/perturbation_image_6_steps.png)  
+    - Scale of the perturbation  
+        - ![hist](output/untargeted_trained_on_adv_sample/perturbation_histogram_6_steps.png)  
+    - New adversarial image  
+        - ![adv_img](output/untargeted_trained_on_adv_sample/adversarial_image_6_steps.png)  
 
-    > **Note:** More Attack budget spent $\varepsilon = 12/255$
+    > **Note:** More Attack budget spent $\varepsilon = 12/255$  
 
 ### Untargeted attack success rates
-$$
-\text{Untargeted Attack Success Rate} = \frac{\# \text{ of adversarial samples classified differently from ground truth}}{\text{total adversarial samples}} \times 100
-$$
+
+Untargeted Attack Success Rate = (number of adversarial samples classified differently from ground truth) / (total adversarial samples) × 100
 
 | Metric | Value (%) |
 | :-- | :-- |
@@ -80,59 +82,58 @@ $$
 
 ### Targeted Adversarial Training
 
-- Baseline Targeted FGSM Attack class Cat (Same class used for robust training)
-        - Original image
-            ![img](output/targeted_baseline_same_class/original_image.png)
-        - Perturbation
-            ![perturbation](output/targeted_baseline_same_class/perturbation_image_4_steps.png)
-        - Scale of the perturbation
-            ![hist](output/targeted_baseline_same_class/perturbation_histogram_4_steps.png)
-        - New adversarial image
-            ![adv_img](output/targeted_baseline_same_class/adversarial_image_4_steps.png)
+- Baseline Targeted FGSM Attack class Cat (Same class used for robust training)  
+        - Original image  
+            ![img](output/targeted_baseline_same_class/original_image.png)  
+        - Perturbation  
+            ![perturbation](output/targeted_baseline_same_class/perturbation_image_4_steps.png)  
+        - Scale of the perturbation  
+            ![hist](output/targeted_baseline_same_class/perturbation_histogram_4_steps.png)  
+        - New adversarial image  
+            ![adv_img](output/targeted_baseline_same_class/adversarial_image_4_steps.png)  
 
     > **Note:** Attack budget $\varepsilon = 8/255$
 
-- Baseline Targeted FGSM Attack class Horse (Different class used for robust training)
-        - Original image
-            ![img](output/targeted_baseline_different_class/original_image.png)
-        - Perturbation
-            ![perturbation](output/targeted_baseline_different_class/perturbation_image_3_steps.png)
-        - Scale of the perturbation
-            ![hist](output/targeted_baseline_different_class/perturbation_histogram_3_steps.png)
-        - New adversarial image
-            ![adv_img](output/targeted_baseline_different_class/adversarial_image_3_steps.png)
+- Baseline Targeted FGSM Attack class Horse (Different class used for robust training)  
+        - Original image  
+            ![img](output/targeted_baseline_different_class/original_image.png)  
+        - Perturbation  
+            ![perturbation](output/targeted_baseline_different_class/perturbation_image_3_steps.png)  
+        - Scale of the perturbation  
+            ![hist](output/targeted_baseline_different_class/perturbation_histogram_3_steps.png)  
+        - New adversarial image  
+            ![adv_img](output/targeted_baseline_different_class/adversarial_image_3_steps.png)  
 
     > **Note:** Attack budget $\varepsilon = 6/255$
 
-- Targeted FGSM Attack class "cat", after Targeted Adversarial training on "cat" class
-        - Original image
-            ![img](output/targeted_trained_baseline_same_class/original_image.png)
-        - Perturbation
-            ![perturbation](output/targeted_trained_baseline_same_class/perturbation_image_4_steps.png)
-        - Scale of the perturbation
-            ![hist](output/targeted_trained_baseline_same_class/perturbation_histogram_4_steps.png)
-        - New adversarial image
-            ![adv_img](output/targeted_trained_baseline_same_class/adversarial_image_4_steps.png)
+- Targeted FGSM Attack class "cat", after Targeted Adversarial training on "cat" class  
+        - Original image  
+            ![img](output/targeted_trained_baseline_same_class/original_image.png)  
+        - Perturbation  
+            ![perturbation](output/targeted_trained_baseline_same_class/perturbation_image_4_steps.png)  
+        - Scale of the perturbation  
+            ![hist](output/targeted_trained_baseline_same_class/perturbation_histogram_4_steps.png)  
+        - New adversarial image  
+            ![adv_img](output/targeted_trained_baseline_same_class/adversarial_image_4_steps.png)  
 
     > **Note:** Same Attack budget $\varepsilon = 8/255$ it worked?
 
-- Targeted FGSM Attack class "horse", after Targeted Adversarial training on "cat" class
-        - Original image
-            ![img](output/targeted_baseline_different_class/original_image.png)
-        - Perturbation
-            ![perturbation](output/targeted_baseline_different_class/perturbation_image_3_steps.png)
-        - Scale of the perturbation
-            ![hist](output/targeted_baseline_different_class/perturbation_histogram_3_steps.png)
-        - New adversarial image
-            ![adv_img](output/targeted_baseline_different_class/adversarial_image_3_steps.png)
+- Targeted FGSM Attack class "horse", after Targeted Adversarial training on "cat" class  
+        - Original image  
+            ![img](output/targeted_baseline_different_class/original_image.png)  
+        - Perturbation  
+            ![perturbation](output/targeted_baseline_different_class/perturbation_image_3_steps.png)  
+        - Scale of the perturbation  
+            ![hist](output/targeted_baseline_different_class/perturbation_histogram_3_steps.png)  
+        - New adversarial image  
+            ![adv_img](output/targeted_baseline_different_class/adversarial_image_3_steps.png)  
 
     > **Note:** Same Attack budget $\varepsilon = 6/255$ it worked?
 
 
-### Targeted attack success rates
-$$
-\text{Targeted Attack Success Rate} = \frac{\# \text{ of adversarial samples classified as target class}}{\text{total adversarial samples}} \times 100
-$$
+### Targeted attack success rates  
+
+Targeted Attack Success Rate = (number of adversarial samples classified as target class) / (total adversarial samples) × 100
 
 **Targeted Attack Success Rate Before Training**
 
@@ -263,11 +264,11 @@ python training_CNN.py
 python training_Autoencoder.py
 ```
 4. **Visualize Results**
+    - All outputs and visualizations are saved in the `output` folder following the directory structure described above.
     - Run `Lab4_OOD.py` to perform all the content described above.
 ```bash
 python Lab4_OOD.py
 ```
-    - All outputs and visualizations are saved in the `output` folder following the directory structure described above.
 
 ***
 
