@@ -76,7 +76,7 @@ pip install -r requirements.txt
 python transformer_3_2_Lora_fine_tuned.py
 ```
 4. Evaluate Clip model:
-    - Rename the desired checkpoint folder as best_(mode)
+    - Rename the desired checkpoint folder as best_{mode}
 ```
 python transformer_3_2_metrics.py
 ```
